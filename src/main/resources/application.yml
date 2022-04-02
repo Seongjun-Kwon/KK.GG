@@ -1,0 +1,20 @@
+# org.hibernate.SQL: 로거를 이용하여 sql 출력
+# org.hibernate.type: ?로 나타나는 파라미터를 출력
+# jpa.properties.hibernate.ddl-auto (create): 애플리케이션 로딩 시 테이블을 drop 후 새로 create 한다
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: create
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
