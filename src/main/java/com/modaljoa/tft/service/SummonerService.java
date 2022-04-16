@@ -1,6 +1,6 @@
 package com.modaljoa.tft.service;
 
-import com.modaljoa.tft.dto.SummonerDTO;
+import com.modaljoa.tft.dto.summoner.SummonerDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;

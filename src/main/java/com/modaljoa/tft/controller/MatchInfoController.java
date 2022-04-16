@@ -1,6 +1,6 @@
 package com.modaljoa.tft.controller;
 
-import com.modaljoa.tft.dto.MatchDto;
+import com.modaljoa.tft.dto.match.MatchDto;
 import com.modaljoa.tft.service.MatchInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

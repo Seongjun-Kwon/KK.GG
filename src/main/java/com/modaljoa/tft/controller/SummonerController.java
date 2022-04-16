@@ -1,6 +1,6 @@
 package com.modaljoa.tft.controller;
 
-import com.modaljoa.tft.dto.SummonerDTO;
+import com.modaljoa.tft.dto.summoner.SummonerDTO;
 import com.modaljoa.tft.service.SummonerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

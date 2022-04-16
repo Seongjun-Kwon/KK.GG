@@ -1,6 +1,6 @@
 package com.modaljoa.tft.controller;
 
-import com.modaljoa.tft.dto.LeagueEntryDTO;
+import com.modaljoa.tft.dto.summoner.LeagueEntryDTO;
 import com.modaljoa.tft.service.LeagueInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

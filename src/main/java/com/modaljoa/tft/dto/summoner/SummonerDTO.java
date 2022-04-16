@@ -1,4 +1,4 @@
-package com.modaljoa.tft.dto;
+package com.modaljoa.tft.dto.summoner;
 
 import lombok.Data;
 

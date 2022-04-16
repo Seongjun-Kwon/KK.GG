@@ -1,6 +1,6 @@
 package com.modaljoa.tft.service;
 
-import com.modaljoa.tft.dto.MatchDto;
+import com.modaljoa.tft.dto.match.MatchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
