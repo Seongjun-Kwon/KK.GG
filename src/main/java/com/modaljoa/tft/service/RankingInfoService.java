@@ -11,19 +11,21 @@ import static com.modaljoa.tft.info.StringInfo.*;
 
 @Service
 @RequiredArgsConstructor
-public class GrandmasterInfoService {
+public class RankingInfoService {
 
     private final RestTemplateBuilder restTemplateBuilder;
 
-    public LeagueListDTO getGrandmasterInfo() {
+    public LeagueListDTO getTopTierInfo(String tier) {
         RestTemplate restTemplate = restTemplateBuilder.build();
+        setHeaders();
+        LeagueListDTO topTierInfo = restTemplate.getForObject(getTopTierUsers + tier + "?api_key=" + apiKey, LeagueListDTO.class);
 
+        return topTierInfo;
+    }
+
+    private void setHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.ACCEPT_CHARSET, "application/x-www-form-urlencoded; charset=UTF-8");
         headers.set(HttpHeaders.ORIGIN, requestHeaderOrigin);
-
-        LeagueListDTO grandmasterInfo = restTemplate.getForObject(getGrandmasterUsers + "?api_key=" + apiKey, LeagueListDTO.class);
-
-        return grandmasterInfo;
     }
 }
