@@ -1,14 +1,14 @@
-package com.modaljoa.tft.dto.league;
+package com.modaljoa.tft.vo.riotApi.league;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class LeagueListDTO {
+public class LeagueList {
 
     private String leagueId;
-    private List<LeagueItemDTO> entries;
+    private List<LeagueItem> entries;
     private String tier;
     private String name;
     private String queue;

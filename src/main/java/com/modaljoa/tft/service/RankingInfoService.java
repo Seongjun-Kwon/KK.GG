@@ -1,7 +1,7 @@
 package com.modaljoa.tft.service;
 
-import com.modaljoa.tft.dto.league.LeagueListDTO;
-import com.modaljoa.tft.dto.summoner.LeagueEntryDTO;
+import com.modaljoa.tft.vo.riotApi.league.LeagueList;
+import com.modaljoa.tft.vo.riotApi.summoner.LeagueEntryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -18,10 +18,10 @@ public class RankingInfoService {
 
     private final RestTemplateBuilder restTemplateBuilder;
 
-    public LeagueListDTO getTopTierInfo(String tier) {
+    public LeagueList getTopTierInfo(String tier) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
-        LeagueListDTO topTierInfo = restTemplate.getForObject(getTopTierUsers + tier + "?api_key=" + apiKey, LeagueListDTO.class);
+        LeagueList topTierInfo = restTemplate.getForObject(getTopTierUsers + tier + "?api_key=" + apiKey, LeagueList.class);
 
         return topTierInfo;
     }

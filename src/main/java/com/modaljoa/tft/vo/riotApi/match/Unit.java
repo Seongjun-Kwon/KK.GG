@@ -1,11 +1,11 @@
-package com.modaljoa.tft.dto.match;
+package com.modaljoa.tft.vo.riotApi.match;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class UnitDto {
+public class Unit {
     private List<Integer> items;
     private String character_id;
     private String chosen;

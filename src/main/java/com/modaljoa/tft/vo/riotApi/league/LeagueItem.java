@@ -1,15 +1,15 @@
-package com.modaljoa.tft.dto.league;
+package com.modaljoa.tft.vo.riotApi.league;
 
-import com.modaljoa.tft.dto.summoner.MiniSeriesDTO;
+import com.modaljoa.tft.vo.riotApi.summoner.MiniSeries;
 import lombok.Data;
 
 @Data
-public class LeagueItemDTO {
+public class LeagueItem {
 
     private boolean freshBlood;
     private int wins;
     private String summonerName;
-    private MiniSeriesDTO miniSeries;
+    private MiniSeries miniSeries;
     private boolean inactive;
     private boolean veteran;
     private boolean hotStreak;

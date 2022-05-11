@@ -1,9 +1,9 @@
-package com.modaljoa.tft.dto.summoner;
+package com.modaljoa.tft.vo.riotApi.summoner;
 
 import lombok.Data;
 
 @Data
-public class SummonerDTO {
+public class Summoner {
     private String accountId;
     private int profileIconId;
     private long revisionDate;

@@ -1,9 +1,9 @@
-package com.modaljoa.tft.dto.match;
+package com.modaljoa.tft.vo.riotApi.match;
 
 import lombok.Data;
 
 @Data
-public class TraitDto {
+public class Trait {
     private String name;
     private int num_units;
     private int style;

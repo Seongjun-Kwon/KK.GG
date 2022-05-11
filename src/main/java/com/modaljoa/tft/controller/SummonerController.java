@@ -1,8 +1,5 @@
 package com.modaljoa.tft.controller;
 
-import com.modaljoa.tft.dto.match.MatchDto;
-import com.modaljoa.tft.dto.summoner.LeagueEntryDTO;
-import com.modaljoa.tft.dto.summoner.SummonerDTO;
 import com.modaljoa.tft.service.SummonerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,9 +19,9 @@ public class SummonerController {
     @GetMapping("/profile/kr/{summonerName}")
     public String getSummonerInfo(@PathVariable String summonerName, Model model) {
 
-        SummonerDTO summoner = summonerService.getSummoner(summonerName);
-        List<MatchDto> matchDetailList = summonerService.getMatchDetailList(summoner);
-        HashSet<LeagueEntryDTO> leagueInfo = summonerService.getLeagueInfo(summoner);
+        Summoner summoner = summonerService.getSummoner(summonerName);
+        List<Match> matchDetailList = summonerService.getMatchDetailList(summoner);
+        HashSet<LeagueEntry> leagueInfo = summonerService.getLeagueInfo(summoner);
 
         model.addAttribute(summoner);
         model.addAttribute(matchDetailList);

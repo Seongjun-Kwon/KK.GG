@@ -1,8 +1,8 @@
 package com.modaljoa.tft.service;
 
-import com.modaljoa.tft.dto.match.MatchDto;
-import com.modaljoa.tft.dto.summoner.LeagueEntryDTO;
-import com.modaljoa.tft.dto.summoner.SummonerDTO;
+import com.modaljoa.tft.vo.riotApi.match.Match;
+import com.modaljoa.tft.vo.riotApi.summoner.LeagueEntry;
+import com.modaljoa.tft.vo.riotApi.summoner.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -21,16 +21,16 @@ public class SummonerService {
 
     private final RestTemplateBuilder restTemplateBuilder;
 
-    public SummonerDTO getSummoner(String summonerName) {
+    public Summoner getSummoner(String summonerName) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
-        SummonerDTO summonerDTO = restTemplate.getForObject(getSummoner + summonerName + "?api_key=" + apiKey, SummonerDTO.class);
+        Summoner summoner = restTemplate.getForObject(getSummoner + summonerName + "?api_key=" + apiKey, Summoner.class);
 
-        return summonerDTO;
+        return summoner;
     }
 
-    public List<String> getMatchIdList(SummonerDTO summoner) {
+    public List<String> getMatchIdList(Summoner summoner) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
@@ -40,27 +40,27 @@ public class SummonerService {
         return matchIdList;
     }
 
-    public List<MatchDto> getMatchDetailList(SummonerDTO summoner) {
+    public List<Match> getMatchDetailList(Summoner summoner) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
         List<String> matchIdList = getMatchIdList(summoner);
-        List<MatchDto> matchDetailList = new ArrayList<>();
+        List<Match> matchDetailList = new ArrayList<>();
 
         for (String matchId : matchIdList) {
-            MatchDto matchDetail = restTemplate.getForObject(getMatchDetail + matchId + "?api_key=" + apiKey, MatchDto.class);
+            Match matchDetail = restTemplate.getForObject(getMatchDetail + matchId + "?api_key=" + apiKey, Match.class);
             matchDetailList.add(matchDetail);
         }
 
         return matchDetailList;
     }
 
-    public HashSet<LeagueEntryDTO> getLeagueInfo(SummonerDTO summoner) {
+    public HashSet<LeagueEntry> getLeagueInfo(Summoner summoner) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
         String summonerId = summoner.getId();
-        HashSet<LeagueEntryDTO> leagueInfo = restTemplate.getForObject(getLeagueInfo + summonerId + "?api_key=" + apiKey, HashSet.class);
+        HashSet<LeagueEntry> leagueInfo = restTemplate.getForObject(getLeagueInfo + summonerId + "?api_key=" + apiKey, HashSet.class);
 
         return leagueInfo;
     }

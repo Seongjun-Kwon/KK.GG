@@ -1,9 +1,9 @@
-package com.modaljoa.tft.dto.summoner;
+package com.modaljoa.tft.vo.riotApi.summoner;
 
 import lombok.Data;
 
 @Data
-public class MiniSeriesDTO {
+public class MiniSeries {
     private int losses;
     private String progress;
     private int target;

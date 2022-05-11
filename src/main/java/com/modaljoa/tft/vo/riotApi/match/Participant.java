@@ -1,11 +1,11 @@
-package com.modaljoa.tft.dto.match;
+package com.modaljoa.tft.vo.riotApi.match;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class ParticipantDto {
+public class Participant {
     private int gold_left;
     private int last_round;
     private int level;
@@ -14,6 +14,6 @@ public class ParticipantDto {
     private String puuid;
     private float time_eliminated;
     private int total_damage_to_players;
-    private List<TraitDto> traits;
-    private List<UnitDto> units;
+    private List<Trait> traits;
+    private List<Unit> units;
 }

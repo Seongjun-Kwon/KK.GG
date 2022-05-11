@@ -1,9 +1,9 @@
-package com.modaljoa.tft.dto.summoner;
+package com.modaljoa.tft.vo.riotApi.summoner;
 
 import lombok.Data;
 
 @Data
-public class LeagueEntryDTO {
+public class LeagueEntry {
 
     private String leagueId;
     private String summonerId;
@@ -20,5 +20,5 @@ public class LeagueEntryDTO {
     private boolean veteran;
     private boolean freshBlood;
     private boolean inactive;
-    private MiniSeriesDTO miniSeries;
+    private MiniSeries miniSeries;
 }
