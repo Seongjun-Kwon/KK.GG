@@ -1,4 +1,4 @@
-package com.modaljoa.tft.vo.riotApi.summoner;
+package com.modaljoa.tft.vo.riotApi.league.summonerId;
 
 import lombok.Data;
 

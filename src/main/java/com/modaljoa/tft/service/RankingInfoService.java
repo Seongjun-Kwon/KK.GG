@@ -1,6 +1,6 @@
 package com.modaljoa.tft.service;
 
-import com.modaljoa.tft.vo.riotApi.league.LeagueList;
+import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueList;
 import com.modaljoa.tft.vo.riotApi.summoner.LeagueEntryDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;

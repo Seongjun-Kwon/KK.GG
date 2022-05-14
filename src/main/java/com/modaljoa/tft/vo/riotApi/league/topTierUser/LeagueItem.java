@@ -1,6 +1,6 @@
-package com.modaljoa.tft.vo.riotApi.league;
+package com.modaljoa.tft.vo.riotApi.league.topTierUser;
 
-import com.modaljoa.tft.vo.riotApi.summoner.MiniSeries;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.MiniSeries;
 import lombok.Data;
 
 @Data

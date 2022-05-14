@@ -1,4 +1,4 @@
-package com.modaljoa.tft.vo.riotApi.match;
+package com.modaljoa.tft.vo.riotApi.match.matchId;
 
 import lombok.Data;
 

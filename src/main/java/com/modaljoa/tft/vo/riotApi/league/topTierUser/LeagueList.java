@@ -1,4 +1,4 @@
-package com.modaljoa.tft.vo.riotApi.league;
+package com.modaljoa.tft.vo.riotApi.league.topTierUser;
 
 import lombok.Data;
 

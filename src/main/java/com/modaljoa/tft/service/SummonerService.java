@@ -1,8 +1,8 @@
 package com.modaljoa.tft.service;
 
-import com.modaljoa.tft.vo.riotApi.match.Match;
-import com.modaljoa.tft.vo.riotApi.summoner.LeagueEntry;
-import com.modaljoa.tft.vo.riotApi.summoner.Summoner;
+import com.modaljoa.tft.vo.riotApi.match.matchId.Match;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntry;
+import com.modaljoa.tft.vo.riotApi.summoner.summonerName.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
