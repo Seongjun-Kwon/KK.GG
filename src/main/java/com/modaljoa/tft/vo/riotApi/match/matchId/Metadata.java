@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class Metadata {
-    private String data_version;
-    private String match_id;
+    private String dataVersion;
+    private String matchId;
     private List<String> participants;
 }

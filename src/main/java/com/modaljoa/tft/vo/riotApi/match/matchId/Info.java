@@ -6,11 +6,11 @@ import java.util.List;
 
 @Data
 public class Info {
-    private long game_datetime;
-    private float game_length;
-    private String game_variation;
-    private String game_version;
+    private long gameDatetime;
+    private float gameLength;
+    private String gameVariation;
+    private String gameVersion;
     private List<Participant> participants;
-    private int queue_id;
-    private int tft_set_number;
+    private int queueId;
+    private int tftSetNumber;
 }

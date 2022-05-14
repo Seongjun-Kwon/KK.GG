@@ -6,14 +6,14 @@ import java.util.List;
 
 @Data
 public class Participant {
-    private int gold_left;
-    private int last_round;
+    private int goldLeft;
+    private int lastRound;
     private int level;
     private int placement;
-    private int players_eliminated;
+    private int playersEliminated;
     private String puuid;
-    private float time_eliminated;
-    private int total_damage_to_players;
+    private float timeEliminated;
+    private int totalDamageToPlayers;
     private List<Trait> traits;
     private List<Unit> units;
 }

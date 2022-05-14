@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class Unit {
     private List<Integer> items;
-    private String character_id;
+    private String characterId;
     private String chosen;
     private String name;
     private int rarity;

@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class Trait {
     private String name;
-    private int num_units;
+    private int numUnits;
     private int style;
-    private int tier_current;
-    private int tier_total;
+    private int tierCurrent;
+    private int tierTotal;
 }
