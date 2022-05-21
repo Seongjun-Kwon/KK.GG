@@ -1,8 +1,8 @@
 package com.modaljoa.tft.controller;
 
-import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueList;
-import com.modaljoa.tft.vo.riotApi.summoner.LeagueEntryDTO;
 import com.modaljoa.tft.service.RankingInfoService;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntry;
+import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +22,7 @@ public class RankingInfoController {
     }
 
     @GetMapping("/tft/league/v1/entries/{tier}/{division}")
-    public HashSet<LeagueEntryDTO> findLowTierInfo(@PathVariable String tier, @PathVariable String division) {
+    public HashSet<LeagueEntry> findLowTierInfo(@PathVariable String tier, @PathVariable String division) {
         return rankingInfoService.getLowTierInfo(tier, division);
     }
 }
