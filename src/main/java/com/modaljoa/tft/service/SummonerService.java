@@ -1,6 +1,8 @@
 package com.modaljoa.tft.service;
 
 import com.modaljoa.tft.dto.SummonerDTO;
+import com.modaljoa.tft.dto.SummonerLeagueDTO;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntry;
 import com.modaljoa.tft.vo.riotApi.summoner.summonerName.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -35,17 +37,17 @@ public class SummonerService {
         return summonerDTO;
     }
 
-//    public SummonerLeagueDTO getSummonerLeagueInfo(String summonerName) {
-//        RestTemplate restTemplate = restTemplateBuilder.build();
-//        setHeaders();
-//
-//        String summonerId = getSummoner(summonerName).getId();
-//        LeagueEntry leagueEntry = restTemplate.getForObject(getSummonerLeagueInfo + summonerId + "?api_key=" + apiKey, LeagueEntry.class);
-//
-//        SummonerLeagueDTO summonerLeagueDTO = new SummonerLeagueDTO(leagueEntry);
-//
-//        return summonerLeagueDTO;
-//    }
+    public SummonerLeagueDTO getSummonerLeague(String summonerName) {
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        setHeaders();
+
+        String summonerId = getSummoner(summonerName).getId();
+        LeagueEntry[] leagueEntries = restTemplate.getForObject(getSummonerLeagueInfo + summonerId + "?api_key=" + apiKey, LeagueEntry[].class);
+
+        SummonerLeagueDTO summonerLeagueDTO = new SummonerLeagueDTO(leagueEntries);
+
+        return summonerLeagueDTO;
+    }
 
     private void setHeaders() {
         HttpHeaders headers = new HttpHeaders();

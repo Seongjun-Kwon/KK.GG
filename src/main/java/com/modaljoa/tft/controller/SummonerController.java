@@ -1,6 +1,7 @@
 package com.modaljoa.tft.controller;
 
 import com.modaljoa.tft.dto.SummonerDTO;
+import com.modaljoa.tft.dto.SummonerLeagueDTO;
 import com.modaljoa.tft.service.SummonerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +34,11 @@ public class SummonerController {
         return summonerDTO;
     }
 
-//    @GetMapping("/profile/kr/league/{summonerName}")
-//    public SummonerLeagueDTO getSummonerLeague(@PathVariable String summonerName) {
-//
-//        SummonerLeagueDTO summonerLeagueDTO = summonerService.getSummonerLeagueInfo(summonerName);
-//
-//        return summonerLeagueDTO;
-//    }
+    @GetMapping("/profile/kr/league/{summonerName}")
+    public SummonerLeagueDTO getSummonerLeague(@PathVariable String summonerName) {
+
+        SummonerLeagueDTO summonerLeagueDTO = summonerService.getSummonerLeague(summonerName);
+
+        return summonerLeagueDTO;
+    }
 }
