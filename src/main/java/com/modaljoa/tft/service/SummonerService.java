@@ -44,7 +44,7 @@ public class SummonerService {
         String summonerId = getSummoner(summonerName).getId();
         LeagueEntry[] leagueEntries = restTemplate.getForObject(getSummonerLeagueInfo + summonerId + "?api_key=" + apiKey, LeagueEntry[].class);
 
-        SummonerLeagueDTO summonerLeagueDTO = new SummonerLeagueDTO(leagueEntries);
+        SummonerLeagueDTO summonerLeagueDTO = new SummonerLeagueDTO(leagueEntries[0]);
 
         return summonerLeagueDTO;
     }
