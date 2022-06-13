@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class Participant {
+    private Companion companion;
     private int goldLeft;
     private int lastRound;
     private int level;
