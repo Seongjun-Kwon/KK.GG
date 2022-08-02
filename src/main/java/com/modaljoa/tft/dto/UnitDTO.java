@@ -1,6 +1,6 @@
 package com.modaljoa.tft.dto;
 
-import com.modaljoa.tft.vo.riotApi.match.matchId.Unit;
+import com.modaljoa.tft.vo.riotApi.match.matchId.UnitApi;
 import lombok.Data;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class UnitDTO {
     private int rarity;
     private int tier;
 
-    public UnitDTO(Unit unit) {
+    public UnitDTO(UnitApi unit) {
         this.items = unit.getItems();
         this.characterId = unit.getCharacterId();
         this.chosen = unit.getChosen();

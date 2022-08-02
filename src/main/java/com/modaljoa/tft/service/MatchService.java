@@ -1,8 +1,8 @@
 package com.modaljoa.tft.service;
 
 import com.modaljoa.tft.dto.MatchDTO;
-import com.modaljoa.tft.vo.riotApi.match.matchId.Match;
-import com.modaljoa.tft.vo.riotApi.summoner.summonerName.Summoner;
+import com.modaljoa.tft.vo.riotApi.match.matchId.MatchApi;
+import com.modaljoa.tft.vo.riotApi.summoner.summonerName.SummonerApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -24,7 +24,7 @@ public class MatchService {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
-        Summoner summoner = restTemplate.getForObject(getSummoner + summonerName + "?api_key=" + apiKey, Summoner.class);
+        SummonerApi summoner = restTemplate.getForObject(getSummoner + summonerName + "?api_key=" + apiKey, SummonerApi.class);
         String puuid = summoner.getPuuid();
         List<String> matchIdList = restTemplate.getForObject(getMatchIdList + puuid + "/ids?count=20&api_key=" + apiKey, List.class);
 
@@ -39,7 +39,7 @@ public class MatchService {
         List<MatchDTO> matchDetailList = new ArrayList<>();
 
         for (String matchId : matchIdList) {
-            Match match = restTemplate.getForObject(getMatchDetail + matchId + "?api_key=" + apiKey, Match.class);
+            MatchApi match = restTemplate.getForObject(getMatchDetail + matchId + "?api_key=" + apiKey, MatchApi.class);
             MatchDTO matchDTO = new MatchDTO(match);
             matchDetailList.add(matchDTO);
         }

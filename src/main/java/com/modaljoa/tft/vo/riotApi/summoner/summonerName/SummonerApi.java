@@ -3,7 +3,7 @@ package com.modaljoa.tft.vo.riotApi.summoner.summonerName;
 import lombok.Data;
 
 @Data
-public class Summoner {
+public class SummonerApi {
     private String accountId;
     private int profileIconId;
     private long revisionDate;

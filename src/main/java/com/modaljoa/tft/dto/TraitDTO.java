@@ -1,6 +1,6 @@
 package com.modaljoa.tft.dto;
 
-import com.modaljoa.tft.vo.riotApi.match.matchId.Trait;
+import com.modaljoa.tft.vo.riotApi.match.matchId.TraitApi;
 import lombok.Data;
 
 @Data
@@ -11,7 +11,7 @@ public class TraitDTO {
     private int tierCurrent;
     private int tierTotal;
 
-    public TraitDTO(Trait trait) {
+    public TraitDTO(TraitApi trait) {
         this.traitName = trait.getName();
         this.numUnits = trait.getNumUnits();
         this.style = trait.getStyle();

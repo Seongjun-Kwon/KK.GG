@@ -5,8 +5,8 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Participant {
-    private Companion companion;
+public class ParticipantApi {
+    private CompanionApi companion;
     private int goldLeft;
     private int lastRound;
     private int level;
@@ -15,6 +15,6 @@ public class Participant {
     private String puuid;
     private float timeEliminated;
     private int totalDamageToPlayers;
-    private List<Trait> traits;
-    private List<Unit> units;
+    private List<TraitApi> traits;
+    private List<UnitApi> units;
 }

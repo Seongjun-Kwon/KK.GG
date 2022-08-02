@@ -3,7 +3,7 @@ package com.modaljoa.tft.vo.riotApi.league.summonerId;
 import lombok.Data;
 
 @Data
-public class LeagueEntry {
+public class LeagueEntryApi {
 
     private String leagueId;
     private String summonerId;
@@ -20,5 +20,5 @@ public class LeagueEntry {
     private boolean veteran;
     private boolean freshBlood;
     private boolean inactive;
-    private MiniSeries miniSeries;
+    private MiniSeriesApi miniSeries;
 }

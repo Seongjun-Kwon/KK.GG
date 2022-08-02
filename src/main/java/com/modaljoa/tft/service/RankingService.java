@@ -2,8 +2,8 @@ package com.modaljoa.tft.service;
 
 import com.modaljoa.tft.dto.RankingDTO;
 import com.modaljoa.tft.dto.SummonerLeagueDTO;
-import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntry;
-import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueList;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntryApi;
+import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueListApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -25,7 +25,7 @@ public class RankingService {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
-        LeagueList leagueList = restTemplate.getForObject(getTopTierUsers + tier + "?api_key=" + apiKey, LeagueList.class);
+        LeagueListApi leagueList = restTemplate.getForObject(getTopTierUsers + tier + "?api_key=" + apiKey, LeagueListApi.class);
         RankingDTO rankingDTO = new RankingDTO(leagueList);
 
         return rankingDTO;
@@ -37,8 +37,8 @@ public class RankingService {
 
         List<SummonerLeagueDTO> leagueDTOs = new ArrayList<>();
 
-        LeagueEntry[] leagueEntries = restTemplate.getForObject(getLowTierUsers + tier + "/" + division + "?api_key=" + apiKey, LeagueEntry[].class);
-        for (LeagueEntry leagueEntry : leagueEntries) {
+        LeagueEntryApi[] leagueEntries = restTemplate.getForObject(getLowTierUsers + tier + "/" + division + "?api_key=" + apiKey, LeagueEntryApi[].class);
+        for (LeagueEntryApi leagueEntry : leagueEntries) {
             SummonerLeagueDTO leagueDTO = new SummonerLeagueDTO(leagueEntry);
             leagueDTOs.add(leagueDTO);
         }

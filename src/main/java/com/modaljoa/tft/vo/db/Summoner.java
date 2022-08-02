@@ -1,6 +1,7 @@
 package com.modaljoa.tft.vo.db;
 
 import com.modaljoa.tft.dto.SummonerLeagueDTO;
+import com.modaljoa.tft.vo.riotApi.summoner.summonerName.SummonerApi;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -40,7 +41,7 @@ public class Summoner {
     public Summoner() {
     }
 
-    public Summoner(com.modaljoa.tft.vo.riotApi.summoner.summonerName.Summoner summoner, SummonerLeagueDTO summonerLeagueDTO) {
+    public Summoner(SummonerApi summoner, SummonerLeagueDTO summonerLeagueDTO) {
         this.summonerId = summoner.getId();
         this.name = summoner.getName();
         this.profileIconId = summoner.getProfileIconId();

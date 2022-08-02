@@ -1,7 +1,7 @@
 package com.modaljoa.tft.dto;
 
-import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueItem;
-import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueList;
+import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueItemApi;
+import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueListApi;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ public class RankingDTO {
     private String tier;
     private List<RankingItemDTO> entries;
 
-    public RankingDTO(LeagueList leagueList) {
+    public RankingDTO(LeagueListApi leagueList) {
         this.tier = leagueList.getTier();
         this.entries = getRankingItemDtoList(leagueList.getEntries());
     }
 
-    public List<RankingItemDTO> getRankingItemDtoList(List<LeagueItem> leagueItems) {
+    public List<RankingItemDTO> getRankingItemDtoList(List<LeagueItemApi> leagueItems) {
         List<RankingItemDTO> rankingItemDtoList = new ArrayList<>();
 
-        for (LeagueItem leagueItem : leagueItems) {
+        for (LeagueItemApi leagueItem : leagueItems) {
             RankingItemDTO rankingItemDTO = new RankingItemDTO(leagueItem);
 
             rankingItemDtoList.add(rankingItemDTO);

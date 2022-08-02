@@ -5,12 +5,12 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Info {
+public class InfoApi {
     private long gameDatetime;
     private float gameLength;
     private String gameVariation;
     private String gameVersion;
-    private List<Participant> participants;
+    private List<ParticipantApi> participants;
     private int queueId;
     private int tftSetNumber;
 }

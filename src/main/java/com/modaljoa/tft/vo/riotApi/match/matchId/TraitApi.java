@@ -3,7 +3,7 @@ package com.modaljoa.tft.vo.riotApi.match.matchId;
 import lombok.Data;
 
 @Data
-public class Trait {
+public class TraitApi {
     private String name;
     private int numUnits;
     private int style;

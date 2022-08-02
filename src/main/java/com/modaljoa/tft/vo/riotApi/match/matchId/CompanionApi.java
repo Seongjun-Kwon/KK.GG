@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @Data
-public class Companion { // 꼬마 전설이
+public class CompanionApi { // 꼬마 전설이
 
     private String contentId;
     private int skinId;

@@ -1,6 +1,6 @@
 package com.modaljoa.tft.dto;
 
-import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntry;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntryApi;
 import lombok.Data;
 
 @Data
@@ -13,7 +13,7 @@ public class SummonerLeagueDTO {
     private int wins;
     private int losses;
 
-    public SummonerLeagueDTO(LeagueEntry leagueEntry) {
+    public SummonerLeagueDTO(LeagueEntryApi leagueEntry) {
         this.summonerName = leagueEntry.getSummonerName();
         this.tier = leagueEntry.getTier();
         this.rank = leagueEntry.getRank();

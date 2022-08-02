@@ -1,9 +1,9 @@
 package com.modaljoa.tft.dto;
 
-import com.modaljoa.tft.vo.riotApi.match.matchId.Companion;
-import com.modaljoa.tft.vo.riotApi.match.matchId.Participant;
-import com.modaljoa.tft.vo.riotApi.match.matchId.Trait;
-import com.modaljoa.tft.vo.riotApi.match.matchId.Unit;
+import com.modaljoa.tft.vo.riotApi.match.matchId.CompanionApi;
+import com.modaljoa.tft.vo.riotApi.match.matchId.ParticipantApi;
+import com.modaljoa.tft.vo.riotApi.match.matchId.TraitApi;
+import com.modaljoa.tft.vo.riotApi.match.matchId.UnitApi;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class ParticipantDTO {
     private List<TraitDTO> traits;
     private List<UnitDTO> units;
 
-    public ParticipantDTO(Participant participant) {
+    public ParticipantDTO(ParticipantApi participant) {
         this.companion = getCompanionDto(participant.getCompanion());
         this.goldLeft = participant.getGoldLeft();
         this.lastRound = participant.getLastRound();
@@ -31,7 +31,7 @@ public class ParticipantDTO {
         this.units = getUnitDtoList(participant.getUnits());
     }
 
-    public CompanionDTO getCompanionDto(Companion companion) {
+    public CompanionDTO getCompanionDto(CompanionApi companion) {
         CompanionDTO companionDTO = new CompanionDTO();
 
         companionDTO.setContentId(companion.getContentId());
@@ -41,10 +41,10 @@ public class ParticipantDTO {
         return companionDTO;
     }
 
-    public List<TraitDTO> getTraitDtoList(List<Trait> traits) {
+    public List<TraitDTO> getTraitDtoList(List<TraitApi> traits) {
         List<TraitDTO> traitDtoList = new ArrayList<>();
 
-        for (Trait trait : traits) {
+        for (TraitApi trait : traits) {
             TraitDTO traitDTO = new TraitDTO(trait);
             traitDtoList.add(traitDTO);
         }
@@ -52,10 +52,10 @@ public class ParticipantDTO {
         return traitDtoList;
     }
 
-    public List<UnitDTO> getUnitDtoList(List<Unit> units) {
+    public List<UnitDTO> getUnitDtoList(List<UnitApi> units) {
         List<UnitDTO> unitDtoList = new ArrayList<>();
 
-        for (Unit unit : units) {
+        for (UnitApi unit : units) {
             UnitDTO unitDTO = new UnitDTO(unit);
             unitDtoList.add(unitDTO);
         }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Unit {
+public class UnitApi {
     private List<Integer> items;
     private String characterId;
     private String chosen;

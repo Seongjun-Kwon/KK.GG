@@ -1,6 +1,6 @@
 package com.modaljoa.tft.vo.db;
 
-import com.modaljoa.tft.vo.riotApi.match.matchId.Companion;
+import com.modaljoa.tft.vo.riotApi.match.matchId.CompanionApi;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,7 +23,7 @@ public class Participant {
     private Match match;
 
     @Embedded
-    private Companion companion;
+    private CompanionApi companion;
 
     private int goldLeft;
     private int lastRound;

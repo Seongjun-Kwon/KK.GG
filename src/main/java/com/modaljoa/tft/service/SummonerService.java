@@ -3,8 +3,8 @@ package com.modaljoa.tft.service;
 import com.modaljoa.tft.dto.SummonerDTO;
 import com.modaljoa.tft.dto.SummonerLeagueDTO;
 import com.modaljoa.tft.repository.SummonerRepository;
-import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntry;
-import com.modaljoa.tft.vo.riotApi.summoner.summonerName.Summoner;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntryApi;
+import com.modaljoa.tft.vo.riotApi.summoner.summonerName.SummonerApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
@@ -20,11 +20,11 @@ public class SummonerService {
     private final RestTemplateBuilder restTemplateBuilder;
     private final SummonerRepository summonerRepository;
 
-    public Summoner getSummoner(String summonerName) {
+    public SummonerApi getSummoner(String summonerName) {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
-        Summoner summoner = restTemplate.getForObject(getSummoner + summonerName + "?api_key=" + apiKey, Summoner.class);
+        SummonerApi summoner = restTemplate.getForObject(getSummoner + summonerName + "?api_key=" + apiKey, SummonerApi.class);
 
         return summoner;
     }
@@ -33,7 +33,7 @@ public class SummonerService {
         RestTemplate restTemplate = restTemplateBuilder.build();
         setHeaders();
 
-        Summoner summoner = getSummoner(summonerName);
+        SummonerApi summoner = getSummoner(summonerName);
 
         com.modaljoa.tft.vo.db.Summoner summonerDb = new com.modaljoa.tft.vo.db.Summoner(summoner, getSummonerLeague(summonerName));
         summonerRepository.save(summonerDb);
@@ -48,7 +48,7 @@ public class SummonerService {
         setHeaders();
 
         String summonerId = getSummoner(summonerName).getId();
-        LeagueEntry[] leagueEntries = restTemplate.getForObject(getSummonerLeagueInfo + summonerId + "?api_key=" + apiKey, LeagueEntry[].class);
+        LeagueEntryApi[] leagueEntries = restTemplate.getForObject(getSummonerLeagueInfo + summonerId + "?api_key=" + apiKey, LeagueEntryApi[].class);
 
         SummonerLeagueDTO summonerLeagueDTO = new SummonerLeagueDTO(leagueEntries[0]);
 

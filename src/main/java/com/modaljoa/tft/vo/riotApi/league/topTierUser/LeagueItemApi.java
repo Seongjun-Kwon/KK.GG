@@ -1,15 +1,15 @@
 package com.modaljoa.tft.vo.riotApi.league.topTierUser;
 
-import com.modaljoa.tft.vo.riotApi.league.summonerId.MiniSeries;
+import com.modaljoa.tft.vo.riotApi.league.summonerId.MiniSeriesApi;
 import lombok.Data;
 
 @Data
-public class LeagueItem {
+public class LeagueItemApi {
 
     private boolean freshBlood;
     private int wins;
     private String summonerName;
-    private MiniSeries miniSeries;
+    private MiniSeriesApi miniSeries;
     private boolean inactive;
     private boolean veteran;
     private boolean hotStreak;
