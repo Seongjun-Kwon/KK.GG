@@ -3,6 +3,7 @@ package com.modaljoa.tft.vo.db;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,7 +16,9 @@ public class ParticipantUnit {
     @ManyToOne
     private Participant participant;
 
-    //    private Set<Integer> items;
+//    private List<Integer> items;
+
+    @Column(name = "character_id")
     private String characterId;
     private String chosen;
     private String name;

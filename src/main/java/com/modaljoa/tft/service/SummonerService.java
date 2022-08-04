@@ -3,6 +3,7 @@ package com.modaljoa.tft.service;
 import com.modaljoa.tft.dto.SummonerDTO;
 import com.modaljoa.tft.dto.SummonerLeagueDTO;
 import com.modaljoa.tft.repository.SummonerRepository;
+import com.modaljoa.tft.vo.db.Summoner;
 import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntryApi;
 import com.modaljoa.tft.vo.riotApi.summoner.summonerName.SummonerApi;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class SummonerService {
 
         SummonerApi summoner = getSummoner(summonerName);
 
-        com.modaljoa.tft.vo.db.Summoner summonerDb = new com.modaljoa.tft.vo.db.Summoner(summoner, getSummonerLeague(summonerName));
+        Summoner summonerDb = new Summoner(summoner, getSummonerLeague(summonerName));
         summonerRepository.save(summonerDb);
 
         SummonerDTO summonerDTO = new SummonerDTO(summoner);
