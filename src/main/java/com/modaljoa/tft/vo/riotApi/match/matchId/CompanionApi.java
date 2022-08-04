@@ -1,5 +1,6 @@
 package com.modaljoa.tft.vo.riotApi.match.matchId;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.Embeddable;
@@ -8,7 +9,10 @@ import javax.persistence.Embeddable;
 @Data
 public class CompanionApi { // 꼬마 전설이
 
+    @JsonProperty(value = "content_ID")
     private String contentId;
+
+    @JsonProperty(value="skin_ID")
     private int skinId;
     private String species;
 }
