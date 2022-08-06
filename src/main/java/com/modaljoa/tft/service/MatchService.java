@@ -6,6 +6,7 @@ import com.modaljoa.tft.repository.ParticipantRepository;
 import com.modaljoa.tft.repository.SummonerRepository;
 import com.modaljoa.tft.vo.db.Match;
 import com.modaljoa.tft.vo.db.Participant;
+import com.modaljoa.tft.vo.db.Summoner;
 import com.modaljoa.tft.vo.riotApi.match.matchId.MatchApi;
 import com.modaljoa.tft.vo.riotApi.match.matchId.ParticipantApi;
 import com.modaljoa.tft.vo.riotApi.summoner.summonerName.SummonerApi;
@@ -58,7 +59,11 @@ public class MatchService {
             List<ParticipantApi> participantApiList = matchApi.getInfo().getParticipants();
             for (ParticipantApi participantApi : participantApiList) {
                 Participant participantDb = new Participant(participantApi);
+
+                Summoner summonerDb = summonerRepository.findByName(summonerName);
+                participantDb.setSummoner(summonerDb);
                 participantDb.setMatch(matchDb);
+
                 participantRepository.save(participantDb);
             }
 
