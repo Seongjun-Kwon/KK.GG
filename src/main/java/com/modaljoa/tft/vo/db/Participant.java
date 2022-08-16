@@ -2,13 +2,13 @@ package com.modaljoa.tft.vo.db;
 
 import com.modaljoa.tft.vo.riotApi.match.matchId.CompanionApi;
 import com.modaljoa.tft.vo.riotApi.match.matchId.ParticipantApi;
-import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
 public class Participant {
 
     @Id
@@ -50,10 +50,12 @@ public class Participant {
     @OneToMany(mappedBy = "participant")
     private List<ParticipantUnit> units;
 
-    public Participant() {
+    protected Participant() {
     }
 
-    public Participant(ParticipantApi participantApi) {
+    public Participant(Summoner summonerDb, Match matchDb, ParticipantApi participantApi) {
+        this.summoner = summonerDb;
+        this.match = matchDb;
         this.companion = participantApi.getCompanion();
         this.goldLeft = participantApi.getGoldLeft();
         this.lastRound = participantApi.getLastRound();

@@ -2,13 +2,13 @@ package com.modaljoa.tft.vo.db;
 
 import com.modaljoa.tft.dto.SummonerLeagueDTO;
 import com.modaljoa.tft.vo.riotApi.summoner.summonerName.SummonerApi;
-import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
 public class Summoner {
 
     @Id
@@ -38,18 +38,44 @@ public class Summoner {
     @OneToMany(mappedBy = "summoner")
     private List<Participant> matchParticipants;
 
-    public Summoner() {
+    protected Summoner() {
     }
 
-    public Summoner(SummonerApi summoner, SummonerLeagueDTO summonerLeagueDTO) {
-        this.summonerId = summoner.getId();
-        this.name = summoner.getName();
-        this.profileIconId = summoner.getProfileIconId();
-        this.summonerLevel = summoner.getSummonerLevel();
+    public Summoner(SummonerApi summonerApi, SummonerLeagueDTO summonerLeagueDTO) {
+        this.summonerId = summonerApi.getId();
+        this.name = summonerApi.getName();
+        this.profileIconId = summonerApi.getProfileIconId();
+        this.summonerLevel = summonerApi.getSummonerLevel();
         this.tier = summonerLeagueDTO.getTier();
         this.rank = summonerLeagueDTO.getRank();
         this.leaguePoints = summonerLeagueDTO.getLeaguePoints();
         this.wins = summonerLeagueDTO.getWins();
         this.losses = summonerLeagueDTO.getLosses();
+    }
+
+    public void updateSummoner(SummonerApi summonerApi, SummonerLeagueDTO summonerLeagueDTO) {
+        this.name = summonerApi.getName();
+        this.profileIconId = summonerApi.getProfileIconId();
+        this.summonerLevel = summonerApi.getSummonerLevel();
+        this.tier = summonerLeagueDTO.getTier();
+        this.rank = summonerLeagueDTO.getRank();
+        this.leaguePoints = summonerLeagueDTO.getLeaguePoints();
+        this.wins = summonerLeagueDTO.getWins();
+        this.losses = summonerLeagueDTO.getLosses();
+    }
+
+    public boolean isChanged(SummonerApi summonerApi, SummonerLeagueDTO summonerLeagueDTO) {
+        if (this.name != summonerApi.getName() ||
+                this.profileIconId != summonerApi.getProfileIconId() ||
+                this.summonerLevel != summonerApi.getSummonerLevel() ||
+                this.tier != summonerLeagueDTO.getTier() ||
+                this.rank != summonerLeagueDTO.getRank() ||
+                this.leaguePoints != summonerLeagueDTO.getLeaguePoints() ||
+                this.wins != summonerLeagueDTO.getWins() ||
+                this.losses != summonerLeagueDTO.getLosses()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -1,13 +1,13 @@
 package com.modaljoa.tft.vo.db;
 
 import com.modaljoa.tft.vo.riotApi.match.matchId.MatchApi;
-import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
 public class Match {
 
     @Id
@@ -41,7 +41,7 @@ public class Match {
     @Column(name = "tft_set_number")
     private int tftSetNumber;
 
-    public Match() {
+    protected Match() {
     }
 
     public Match(MatchApi matchApi) {
