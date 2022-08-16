@@ -51,20 +51,23 @@ public class MatchService {
         List<MatchDTO> matchDetailList = new ArrayList<>();
 
         for (String matchId : matchIdList) {
+            Match matchDb = matchRepository.findByMatchId(matchId);
             MatchApi matchApi = restTemplate.getForObject(getMatchDetail + matchId + "?api_key=" + apiKey, MatchApi.class);
 
-            Match matchDb = new Match(matchApi);
-            matchRepository.save(matchDb);
+            if (matchDb == null) {
+                matchDb = new Match(matchApi);
+                matchRepository.save(matchDb);
+            }
 
             List<ParticipantApi> participantApiList = matchApi.getInfo().getParticipants();
             for (ParticipantApi participantApi : participantApiList) {
-                Participant participantDb = new Participant(participantApi);
-
                 Summoner summonerDb = summonerRepository.findByName(summonerName);
-                participantDb.setSummoner(summonerDb);
-                participantDb.setMatch(matchDb);
+                Participant participantDb = participantRepository.findByPuuid(participantApi.getPuuid());
 
-                participantRepository.save(participantDb);
+                if (participantDb == null) {
+                    participantDb = new Participant(summonerDb, matchDb, participantApi);
+                    participantRepository.save(participantDb);
+                }
             }
 
             MatchDTO matchDTO = new MatchDTO(matchApi);

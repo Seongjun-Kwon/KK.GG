@@ -31,15 +31,19 @@ public class SummonerService {
     }
 
     public SummonerDTO getSummonerDTO(String summonerName) {
-        RestTemplate restTemplate = restTemplateBuilder.build();
-        setHeaders();
+        SummonerApi summonerApi = getSummoner(summonerName);
+        SummonerLeagueDTO summonerLeagueDTO = getSummonerLeague(summonerName);
+        Summoner summonerDb = summonerRepository.findByName(summonerName);
 
-        SummonerApi summoner = getSummoner(summonerName);
+        if (summonerDb == null) {
+            summonerDb = new Summoner(summonerApi, summonerLeagueDTO);
+            summonerRepository.save(summonerDb);
+        } else if (summonerDb.isChanged(summonerApi, summonerLeagueDTO)) {
+            summonerDb.updateSummoner(summonerApi, summonerLeagueDTO);
+            summonerRepository.save(summonerDb);
+        }
 
-        Summoner summonerDb = new Summoner(summoner, getSummonerLeague(summonerName));
-        summonerRepository.save(summonerDb);
-
-        SummonerDTO summonerDTO = new SummonerDTO(summoner);
+        SummonerDTO summonerDTO = new SummonerDTO(summonerApi);
 
         return summonerDTO;
     }
