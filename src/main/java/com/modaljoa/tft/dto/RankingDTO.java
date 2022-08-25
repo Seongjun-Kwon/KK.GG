@@ -5,6 +5,8 @@ import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueListApi;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Data
@@ -26,6 +28,23 @@ public class RankingDTO {
 
             rankingItemDtoList.add(rankingItemDTO);
         }
+
+        Collections.sort(rankingItemDtoList, new Comparator<RankingItemDTO>() {
+            @Override
+            public int compare(RankingItemDTO o1, RankingItemDTO o2) {
+                if (o1.getLeaguePoints() > o2.getLeaguePoints()) {
+                    return -1;
+                } else if (o1.getLeaguePoints() == o2.getLeaguePoints()) {
+                    if (o1.getWins() > o2.getWins()) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                } else {
+                    return 1;
+                }
+            }
+        });
 
         return rankingItemDtoList;
     }
