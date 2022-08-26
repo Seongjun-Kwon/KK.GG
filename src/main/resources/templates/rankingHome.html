@@ -17,27 +17,5 @@
         <option th:each="tierType : ${tierTypes}" th:value="${tierType}" th:text="${tierType.type}">티어</option>
     </select>
 </div>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">순위</th>
-        <th scope="col">소환사</th>
-        <th scope="col">티어</th>
-        <th scope="col">LP</th>
-        <th scope="col">게임 수</th>
-        <th scope="col">TOP 4</th>
-    </tr>
-    </thead>
-    <tbody th:object="${rankingDTO}">
-    <tr th:each="rankingItem:*{entries}">
-        <th scope="row" th:text="${rankingItemStat.count}">순위</th>
-        <td th:text="${rankingItem.summonerName}">소환사</td>
-        <td th:text="${rankingDTO.tier}">티어</td>
-        <td th:text="${rankingItem.leaguePoints}">LP</td>
-        <td th:text="${rankingItem.wins} + ${rankingItem.losses}">게임 수</td>
-        <td th:text="${rankingItem.wins}">TOP 4</td>
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>
