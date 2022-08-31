@@ -13,8 +13,8 @@
 <div class="text-center">
     <div>티어</div>
     <select class="form-select" th:onchange="window.open(value, '_self');">
-        <option value=" ">==티어 선택==</option>
-        <option th:each="tierType : ${tierTypes}" th:value="${tierType}" th:text="${tierType.type}">티어</option>
+        <option th:value="@{/ranking}">==티어 선택==</option>
+        <option th:each="tierType : ${tierTypes}" th:value="@{/ranking(tier=${tierType})}" th:text="${tierType.type}">티어</option>
     </select>
 </div>
 </body>
