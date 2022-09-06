@@ -1,6 +1,8 @@
 package com.modaljoa.tft.controller;
 
+import com.modaljoa.tft.dto.PageDTO;
 import com.modaljoa.tft.dto.RankingDTO;
+import com.modaljoa.tft.dto.RankingItemDTO;
 import com.modaljoa.tft.service.RankingService;
 import com.modaljoa.tft.vo.domain.TierType;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 //@RestController
 @Controller
@@ -30,9 +34,14 @@ public class RankingController {
     }
 
     @GetMapping(params = "tier")
-    public String getTopTierUsers(@RequestParam String tier, Model model) {
+    public String getTopTierUsers(@RequestParam String tier, @RequestParam(required = false, defaultValue = "1") Integer page, Model model) {
         RankingDTO rankingDTO = rankingService.getTopTierUsers(tier);
+        PageDTO pageDTO = new PageDTO(page, rankingDTO.getEntries().size());
+        List<RankingItemDTO> curPageRankingDTO = rankingService.getListPaging(rankingDTO, pageDTO.getStartIdx(), pageDTO.getPageSize());
+
         model.addAttribute(rankingDTO);
+        model.addAttribute("curPageRankingDTO", curPageRankingDTO);
+        model.addAttribute(pageDTO);
 
         return "ranking";
     }

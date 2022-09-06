@@ -10,7 +10,7 @@
 <header th:replace="~{fragment/header::main_header}">
     header 자리입니다.
 </header>
-<div class="text-center">
+<div class="text-center p-2">
     <div>티어</div>
     <select class="form-select" th:onchange="window.open(value, '_self');">
         <option th:value="@{/ranking}">==티어 선택==</option>

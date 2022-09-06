@@ -1,6 +1,7 @@
 package com.modaljoa.tft.service;
 
 import com.modaljoa.tft.dto.RankingDTO;
+import com.modaljoa.tft.dto.RankingItemDTO;
 import com.modaljoa.tft.dto.SummonerLeagueDTO;
 import com.modaljoa.tft.vo.riotApi.league.summonerId.LeagueEntryApi;
 import com.modaljoa.tft.vo.riotApi.league.topTierUser.LeagueListApi;
@@ -44,6 +45,19 @@ public class RankingService {
         }
 
         return leagueDTOs;
+    }
+
+    public List<RankingItemDTO> getListPaging(RankingDTO rankingDTO, int startIdx, int pageSize) {
+        List<RankingItemDTO> entries = rankingDTO.getEntries();
+        List<RankingItemDTO> pagingEntries = new ArrayList<>();
+
+        for (int i = startIdx - 1; i < startIdx + pageSize - 1; i++) {
+            if (i < entries.size()) {
+                pagingEntries.add(entries.get(i));
+            }
+        }
+
+        return pagingEntries;
     }
 
     private void setHeaders() {

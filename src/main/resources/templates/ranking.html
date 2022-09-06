@@ -28,9 +28,9 @@
         <th scope="col">TOP 4</th>
     </tr>
     </thead>
-    <tbody th:object="${rankingDTO}">
-    <tr th:each="rankingItem:*{entries}">
-        <th scope="row" th:text="${rankingItemStat.count}">순위</th>
+    <tbody th:object="${curPageRankingDTO}">
+    <tr th:each="rankingItem:${curPageRankingDTO}">
+        <th scope="row" th:text="${rankingItemStat.index}+${pageDTO.startIdx}">순위</th>
         <td th:text="${rankingItem.summonerName}">소환사</td>
         <td th:text="${rankingDTO.tier}">티어</td>
         <td th:text="${rankingItem.leaguePoints}">LP</td>
@@ -39,5 +39,17 @@
     </tr>
     </tbody>
 </table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" th:href="@{/ranking(tier=${#strings.toLowerCase(rankingDTO.tier)}, page=${pageDTO.prevBlock})}">Previous</a></li>
+        <th:block  th:with="start=${pageDTO.blockStartPage}, end=${pageDTO.blockEndPage}">
+            <li class="page-item"
+                th:with="start=${pageDTO.blockStartPage}, end=${pageDTO.blockEndPage}"
+                th:each="pageNum : ${#numbers.sequence(start, end)}">
+                <a class="page-link" th:href="@{/ranking(tier=${#strings.toLowerCase(rankingDTO.tier)}, page=${pageNum})}" th:text="${pageNum}">1</a></li>
+        </th:block>
+        <li class="page-item"><a class="page-link" th:href="@{/ranking(tier=${#strings.toLowerCase(rankingDTO.tier)}, page=${pageDTO.nextBlock})}">Next</a></li>
+    </ul>
+</nav>
 </body>
 </html>
